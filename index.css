@@ -1,0 +1,344 @@
+.map__container--ui {
+  height: 500px;
+  position: relative;
+  width: 95vw;
+  display: flex;
+  justify-content: center;
+}
+.map__container {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.mapboxgl-canvas {
+  /* padding: 20px; */
+  box-sizing: border-box;
+}
+/* .mapboxgl-marker { */
+/*   margin-top: 6%; */
+/* } */
+
+.mapboxgl-control-container {
+  display: none;
+}
+
+#map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.map-left-menu {
+  width: 280px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 51, 141, 0.65);
+  height: 500px;
+  z-index: 1;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.map-right-menu {
+  box-sizing: border-box;
+  width: 280px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: rgba(0, 51, 141, 0.65);
+  height: 500px;
+  z-index: 1;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 40px;
+  overflow-y: auto;
+}
+
+.map-right-menu::-webkit-scrollbar {
+  display: none;
+}
+
+.map-left-menu li {
+  cursor: pointer;
+  padding: 20px 40px;
+  padding: 30px;
+  color: white;
+  font-family: "Poppins";
+  font-size: 18px;
+  transition: all ease 0.5s;
+}
+
+.map-left-menu li:hover,
+.map-left-menu .selected {
+  background-color: #00338d;
+}
+
+.leaflet-control-zoom,
+.leaflet-control-attribution {
+  display: none;
+}
+
+.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.nav-maps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+  margin: 50px 0px;
+}
+
+.nav-maps li {
+  cursor: pointer;
+  text-align: center;
+  width: max-content;
+  font-size: 20px;
+  font-family: "Poppins";
+  line-height: 25px;
+  padding: 16px 0 0 0px;
+  color: #a7a9ac;
+}
+
+.nav-maps li.selected {
+  color: #00338d;
+  border-bottom: 1px solid #00338d;
+}
+
+.leaflet-marker-shadow {
+  /* background: url("/wp-content/uploads/2021/09/marker-shadow.svg"); */
+  background: url("./wp-content/uploads/2021/09/marker-shadow.svg");
+  background-repeat: repeat;
+  width: 60px;
+  height: 30px;
+  background-repeat: no-repeat;
+  position: absolute;
+  bottom: -10px;
+  right: -15px;
+  z-index: -100;
+}
+
+.marker-info {
+  border-top: 30px solid #b0c0ea;
+  padding: 15px;
+  margin-bottom: 20px;
+  background-color: white;
+  width: 80%;
+  font-family: "Poppins", arial;
+  color: #b0c0ea;
+}
+
+.marker-info p {
+  padding: 25px 0px;
+  text-align: left;
+  /* width: 100%; */
+  padding: 0;
+}
+
+.marker-info.selected {
+  border-top: 30px solid #f53f5b;
+  color: #00338d;
+}
+
+.marker {
+  width: 60px;
+  height: 60px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  /* background-image: url('/wp-content/uploads/2021/09/marker-low-white.svg'); */
+  background-image: url("./wp-content/uploads/2021/09/marker-white.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.marker-info.selected .marker {
+  /* background-image: url('/wp-content/uploads/2021/09/marker-red.svg') !important; */
+  background-image: url("./wp-content/uploads/2021/09/marker-red.svg") !important;
+  color: #00338d !important;
+}
+
+.marker-info .link {
+  margin-top: 100px;
+  text-align: right;
+  font-size: 13px;
+  font-weight: 700;
+
+  letter-spacing: 2px;
+}
+
+.marker-info .link a {
+  color: #b0c0ea;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.marker-info.selected .link a {
+  color: #00338d !important;
+}
+
+.marker-info.selected .link .dashicons {
+  color: #33ccff !important;
+}
+.map-top__menu {
+  display: none;
+  width: 100%;
+  box-sizing: border-box;
+  justify-content: space-between;
+  padding: 0 5%;
+  list-style: none;
+  border-bottom: 0.5px solid #c4c4c4;
+  font-family: "Poppins";
+
+  /* overflow: scroll; */
+}
+#mobile--map__description {
+  display: none;
+}
+
+#mobile--marker__description {
+  display: none;
+}
+@media screen and (max-width: 1023px) {
+  .map-right-menu,
+  .map-left-menu {
+    display: none;
+  }
+  .map-top__menu {
+    display: flex;
+    margin-bottom: 20px;
+    padding-left: 15px;
+  }
+  .map-top__menu > li {
+    height: 28px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  .map-top__menu > .selected {
+    color: #00338d;
+    border-bottom: #00338d 8px solid;
+  }
+  .map__container--ui {
+    height: 325px;
+  }
+  #map {
+    width: 90%;
+    height: 325px;
+  }
+
+  #mobile--map__description {
+    color: #00338d;
+    display: block;
+    border-bottom: 1px solid #c4c4c4;
+    padding: 20px 0 20px 5%;
+    font-size: 21px;
+    font-family: "Poppins";
+  }
+
+  #mobile--marker__description {
+    display: block;
+  }
+  .marker-info {
+    border: none;
+    font-size: 12px;
+    border-bottom: solid 1px #c4c4c4;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
+    color: #00338d;
+    padding: 30px !important;
+    margin: 0;
+  }
+  .marker-info.selected {
+    border-top: none;
+  }
+  .marker-info__main {
+    display: flex;
+  }
+  .link {
+    display: flex;
+  }
+  .marker-info .link a {
+    color: #00338d;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 12px;
+    text-decoration: none;
+  }
+  .marker-info__title {
+    width: 60%;
+    margin: 0 !important;
+  }
+  .marker-info__content {
+    width: 110%;
+    padding: 0 10px !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .marker-info__content > p {
+    margin: 0;
+    text-indent: 0 !important;
+  }
+  .marker-info__main {
+    width: 70%;
+  }
+  .marker-info__marker {
+    margin-top: -5px;
+    width: 34px;
+    height: 34px;
+  }
+  .dashicons-arrow-right-alt2 {
+    color: #33ccff;
+  }
+}
+
+@media screen and (max-width: 512px) {
+  .map-top__menu {
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
+  .map-top__menu > li {
+    padding: 0 12px;
+  }
+  .map-top__menu > li.usa > div {
+    width: 120px;
+  }
+  .nav-maps {
+    flex-wrap: wrap;
+  }
+  .nav-maps > li > div {
+    width: 83vw;
+    border: solid 1px #33ccff;
+    color: #33ccff;
+    border-radius: 3px;
+    line-height: 20px;
+    padding: 20px 0;
+  }
+  .nav-maps > .selected > div {
+    color: #00338d;
+    background: #33ccff;
+  }
+  .nav-maps > .selected {
+    border-bottom: none !important;
+  }
+  .mobile-hide {
+    display: none;
+  }
+}

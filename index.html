@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      href="https://api.tiles.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./index.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <ul class="nav-maps">
+        <li class="selected" id="industriales">
+          <div>
+            <div class="mobile-hide">Conoce nuestras <br /></div>
+            Plantas Industriales
+          </div>
+        </li>
+        <li id="comerciales">
+          <div>
+            <div class="mobile-hide">Conoce nuestras <br /></div>
+            Oficinas Comerciales
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="map__container">
+      <div class="map-top__menu">
+        <li class="col">
+          <div>Colombia</div>
+        </li>
+        <li class="esp">
+          <div>España</div>
+        </li>
+        <li class="usa">
+          <div>Estados Unidos</div>
+        </li>
+        <li class="ven">
+          <div>Venezuela</div>
+        </li>
+      </div>
+      <div class="map__container--ui">
+        <ul class="map-left-menu first">
+          <li class="col">Colombia</li>
+          <li class="esp">España</li>
+          <li class="usa">Estados Unidos</li>
+          <li class="ven">Venezuela</li>
+        </ul>
+        <ul class="map-right-menu"></ul>
+        <div id="map"></div>
+      </div>
+    </div>
+    <div id="mobile--map__description"></div>
+    <div id="mobile--marker__description"></div>
+    <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.js"></script>
+    <script src="data.js"></script>
+    <script src="functions.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
