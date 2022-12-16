@@ -20,34 +20,29 @@ const rightMenu = document.querySelector(".map-right-menu");
 const mobileDescription = document.getElementById(
   "mobile--marker__description"
 );
-const markerContainer =
-  window.innerWidth >= 1024 ? rightMenu : mobileDescription;
+let markerContainer = window.innerWidth >= 1024 ? rightMenu : mobileDescription;
 //marker selection
 
 //fly to selected country in left menu
-const menuLeftItems = Array.from(
-  document.querySelectorAll(".map-left-menu li")
-);
-const infoMarker = Array.from(
-  document.querySelectorAll(".marker-info .marker")
-);
-const menuTopItems = Array.from(document.querySelectorAll(".map-top__menu li"));
-
+const array = (data) => Array.from(data);
+const menuLeftItems = array(document.querySelectorAll(".map-left-menu li"));
+const infoMarker = array(document.querySelectorAll(".marker-info .marker"));
+const menuTopItems = array(document.querySelectorAll(".map-top__menu li"));
 const menuItems = [...menuLeftItems, ...menuTopItems, ...infoMarker];
 
-tabs = Array.from(document.querySelector(".nav-maps").children);
+tabs = array(document.querySelector(".nav-maps").children);
 
 const markers = [];
 const myMarkers = document.querySelectorAll(".marker");
 let selectedMarkerType = "industrialMarkers";
-
-// const tarColombia = document.querySelector(".Bogota");
-// tarColombia.classList.add('marker-selected')
+let currentCountry;
+let state;
 
 //marker icon information
 const ICON = {
-  iconUrl: "/wp-content/uploads/2021/09/marker-white.svg",
-  shadowUrl: "/wp-content/uploads/2021/09/marker-shadow.svg",
+  iconUrl: 'url("/wp-content/uploads/2021/09/marker-white.svg")',
+  iconUrlSelected: 'url("/wp-content/uploads/2021/09/marker-red.svg")',
+  shadowUrl: 'url("/wp-content/uploads/2021/09/marker-shadow.svg")',
   shadowSize: [50, 50],
   iconSize: [60, 60],
   iconAnchor: [25, 25],
@@ -64,16 +59,16 @@ countryKeys.forEach((country) => {
 menuItems.forEach((li, index) => {
   li.addEventListener("click", () => {
     country = li.classList[0];
-    const currentCountry = countries[country];
-    const state = currentCountry.defaultState;
+    currentCountry = countries[country];
+    state = currentCountry.defaultState;
     const selectedItems = document.querySelectorAll(`li.${country}`);
-    console.log(selectedItems);
     menuItems.forEach((item) => item.classList.remove("selected"));
     if (!li.classList.contains("selected")) mapFlyTo(country, state);
     selectedItems.forEach((item) => item.classList.add("selected"));
-
-   document.querySelector(`#map.mapboxgl-map .marker.${country}`).click();
-
+    //para mostrar solo una carta
+    //document.querySelector(`#map.mapboxgl-map .marker.${country}`).click();
+    //para mostrar todas las cartas de cada pais
+    displayAllMarkerCards(country);
   });
 });
 
@@ -81,5 +76,29 @@ tabs.forEach((tab) => tab.addEventListener("click", () => reset(tab)));
 // when an user flips his phone or resizes the window, mobile and desktop marker cards are gonna be displayed,
 // this checks if this resize happens and displays the aproppiate view
 window.addEventListener("resize", () => {
-  state && displayMarkerCards(state);
+  markerContainer = window.innerWidth >= 1024 ? rightMenu : mobileDescription;
+  state && displayMarkerCards(country, state);
 });
+
+const venLeft = document.querySelector('.map-left-menu .ven');
+const clickIndus = document.getElementById('industriales');
+const clickCom = document.getElementById('comerciales');
+const venclick = document.querySelector('.map-top__menu .ven');
+
+function aggSelected() {
+    venclick.classList.add('selected');
+    venLeft.classList.add('selected');
+    clickIndus.classList.add('selected');
+    // clickCom.classList.add('selected');
+    document.querySelector(".map-left-menu .ven").click();
+}
+ aggSelected();
+
+    clickIndus.addEventListener('click', () => {
+        venLeft.classList.add('selected');
+        document.querySelector(".map-left-menu .ven").click();
+    })
+     clickCom.addEventListener('click', () => {
+        venLeft.classList.add('selected');
+        document.querySelector(".map-left-menu .ven").click();
+    })
